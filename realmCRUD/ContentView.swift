@@ -14,19 +14,21 @@ struct ContentView: View {
     
     
     var body: some View {
-        VStack {
-            HStack{
-                Text("Todo")
-                Spacer()
+        NavigationView {
+            VStack {
+                HStack{
+                    Text("Todo")
+                    Spacer()
+                }
+                InputTodo(todo: $todo).textFieldStyle(.roundedBorder)
+                addBtn(todo: $todo).padding()
+                
+                TodoList().listStyle(.plain)
+                
             }
-            InputTodo(todo: $todo).textFieldStyle(.roundedBorder)
-            addBtn(todo: $todo).padding()
-            
-            List(todos) { todo in
-                Text(todo.title)
-            }
-        }
-        .padding()
+            .padding()
+        }.navigationTitle("RealmTodo")
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
 

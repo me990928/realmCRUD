@@ -6,12 +6,22 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct TodoList: View {
     
     @ObservedResults(Todo.self) var todos
     
     var body: some View {
+        List{
+            ForEach(todos.freeze()) { item in
+                Text(item.title)
+            }
+            .onDelete{ IndexSet in
+                // ここで削除できる
+                $todos.remove(atOffsets: IndexSet)
+            }
+            }
     }
 }
 

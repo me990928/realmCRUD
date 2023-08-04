@@ -34,4 +34,5 @@ class realmModel:ObservableObject{
         print(data[0])
         return data
     }
+    
 }
